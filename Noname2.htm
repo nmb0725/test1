@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ </HEAD>
+
+ <BODY>
+  <script type="text/javascript">
+	  alert(document.referrer);
+	  try {
+		  alert(top.location);
+	  }
+	  catch(e) {
+		  alert(e);
+	  }
+function JavaDe(){
+var monyer = new Array();
+var s = document.getElementById('code').value.split("\\x");
+for (i = 1; i < s.length; i++){
+var tp = s[i].substr(2);
+        s[i]= String.fromCharCode(parseInt(s[i], 16)) + tp;
+     }
+document.getElementById('code').value = s.join("");
+}
+
+function JavaEn(){
+var txt=document.getElementById("code");
+var hex=document.getElementById("true");
+
+var test = /"(.+?)"/g;
+var tst = txt.value;
+tst = tst.replace(test,
+function($0,$1,$2) { 
+var monyer = new Array();var i,s;
+for(i=0;i<$1.length;i++){
+   s=$1.charCodeAt(i).toString(16); 
+   if(hex.checked){
+	   monyer+="\\x"+s;
+   }else{
+	   monyer+=new Array(5-String(s).length).join("0")+s;
+   }
+}
+return ('"'+ monyer + '"');
+}
+);
+test =/[\r|\n|\t]*/g;
+txt.value = tst.replace(test,"");
+
+
+}	
+</script>
+<textarea id="code" rows="10" cols="50">\x65\x76\x61\x6c</textarea><input type="checkbox" checked id="true" >是否启用\x加密<br>
+<input onClick="JavaDe()" type="button" value='16进制解密"\x"'><input onClick="JavaEn()" type="button" value='16进制加密'>
+ </BODY>
+</HTML>
