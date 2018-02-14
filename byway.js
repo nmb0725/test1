@@ -228,7 +228,11 @@ function ck_bam(v_ids,this_Obj) {
 //$(".notice2").html('此视频&nbsp;播放时需要&nbsp;<em>等待较长时间</em>,或者<em>用电脑尝试播放</em> '+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
 }
 
-function pan27(v_ids,this_Obj) {doif('https://api2.36cj.com/?vid='+v_ids,this_Obj,0,0,'default');}
+function pan27(v_ids,this_Obj) {
+var targetProtocol = "http:";
+if (window.location.protocol != targetProtocol) window.location.href = targetProtocol + window.location.href.substring(window.location.protocol.length);
+doif('http://api2.36cj.com/?vid='+v_ids,this_Obj,0,0,'default');
+}
 function PAN27(v_ids,this_Obj) {pan27(v_ids,this_Obj);}
 
 function ck_ba7(v_ids,this_Obj) {
