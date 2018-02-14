@@ -72,7 +72,7 @@ else $(".notice2").html('<button onclick="ck_yk(\''+v_ids+'\',this,\'yk2/\',\''+
 function d_bi(v_ids, this_Obj) {
 var page = getPr(v_ids,"page");
 
-doif("http://www.bilibili.com/mobile/video/av" + parseInt(v_ids) + ".html" +  (page?"#page="+page:"") ,this,540,105);
+doif("https://www.bilibili.com/mobile/video/av" + parseInt(v_ids) + ".html" +  (page?"#page="+page:"") ,this,540,105);
 
 	//d_bi1(v_ids, this_Obj);
 	$(".notice2").html('此视频&nbsp;<em> 手机可能无法播放</em>或<em>要等很久</em>,可以&nbsp;<em>换成 电脑 播放</em>'+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
@@ -190,7 +190,7 @@ $(".notice2").html("<button onclick=\"yk_d1('"+v_ids+"',this,1)\"> 兼容模式<
 
 
 function c_k2(v_ids) {
-	ck_yk("http://s.82ucc.com/"+v_ids+".mp4",this,"nb/","f");
+	ck_yk("https://s.82ucc.com/"+v_ids+".mp4",this,"nb/","f");
 }
 
 function yk_bs(v_ids,this_Obj) {
@@ -201,7 +201,7 @@ function yk_bs(v_ids,this_Obj) {
 	if (v_ids.substring(0,1) == "p") end = '.mp4|1985';
 	if (v_ids.substring(0,1) == "b") end = '.rmvb|1985';
 	if (v_ids.substring(0,1) == "v") end = '.mkv|1985';
-	if (v_ids.substring(0,1) == "1") ck_f("http://v1.go2yd.com/user_upload/"+v_ids+".mp4",this_Obj);
+	if (v_ids.substring(0,1) == "1") ck_f("https://v1.go2yd.com/user_upload/"+v_ids+".mp4",this_Obj);
 	else doif('https://url.sqlgame.com/?path='+unescape(v_ids)+end,this);
 $(".notice2").html('此视频&nbsp;<em>不稳定</em>,可能需要&nbsp;<em>等待很久</em>,或者<em>无法播放</em> '+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
 }
@@ -228,7 +228,7 @@ function ck_bam(v_ids,this_Obj) {
 //$(".notice2").html('此视频&nbsp;播放时需要&nbsp;<em>等待较长时间</em>,或者<em>用电脑尝试播放</em> '+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
 }
 
-function pan27(v_ids,this_Obj) {doif('http://api2.36cj.com/?vid='+v_ids,this_Obj,0,0,'default');}
+function pan27(v_ids,this_Obj) {doif('https://api2.36cj.com/?vid='+v_ids,this_Obj,0,0,'default');}
 function PAN27(v_ids,this_Obj) {pan27(v_ids,this_Obj);}
 
 function ck_ba7(v_ids,this_Obj) {
@@ -253,39 +253,8 @@ return;
 ck_yk(l_i.substring(38) ,this_Obj,"qy/");
 }
 
-function so_h3(l_i, this_Obj) {
-	$('.error').remove();
-try {
-	if (!this_Obj) this_Obj = window.event.srcElement;
-	}catch(e) {	}
-if( isover != 0) {
-this_Obj.target="_blank";
-this_Obj.href= "http://m.tv.sohu.com/v" + l_i + ".shtml";
-return;
+function ck_m3u8(v_ids,this_Obj) {
+if (v_ids.search(/@@hd\.m3u8/i) > 1) ck_yk(v_ids,this_Obj,"hls/","hls");
+else ck_yk(v_ids,this_Obj,"um/","um");
+$(".notice2").html('此视频&nbsp;<em>不稳定</em>,可能需要&nbsp;<em>等待很久</em>,或者<em>无法播放</em> '+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
 }
-	var fo = new SWFObject("http://tv.sohu.com/upload/swf/20140718/Main.swf", "movie_player", "100%", "440", 7, "#000000");
-fo["addVariable"]("flashvars", "&id=" + l_i + "&skinNum=1&sogouBtn=0&domain=inner&skin=0&menu=false&showRecommend=0&autoplay=true&showCtrlBar=1&api_key=2369879459a1dff4033fde2bb6b023e6&jump=0&sid=null");
-	//var fo = new SWFObject("http://tv.sohu.com/upload/swf/20120504/Main.swf", "movie_player", "100%", "440", 7, "#000000");
-	//fo["addVariable"]("flashvars", "&vid=" + l_i + "&skinNum=1&sogouBtn=0&domain=inner&skin=0&menu=false&showRecommend=0&autoplay=true&showCtrlBar=1&api_key=2369879459a1dff4033fde2bb6b023e6&jump=0&sid=null");
-	fo["addParam"]("allowFullScreen", "true");
-	fo["addParam"]("AllowScriptAccess", "never");
-	fo["addParam"]("wmode", "transparent");
-	if (!fo["write"]("wplay")) {
-		window["focus"]();
-	};
-	if (BDAD_ID5 == "notpc") {
-var height = 480;
-var width = document["getElementById"]("wplay").clientWidth;
-//if (bIsWX) height=200;
-//else 
-if (bIsIphoneOs) height=270;//308
-else if (bIsAndroid) height=270;
-else if (bIsIpad) {
-	height =420;
-	width=728;
-}
-$("#wplay").attr("style","");
-document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='http://m.tv.sohu.com/v" + l_i + ".shtml' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0'></IFRAME>";
-	};	
-$(".notice2").html("<button onclick=\"ck_yk('"+l_i+"','','so/','&plus=1')\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中搜狐只能试播5分钟,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");	
-};

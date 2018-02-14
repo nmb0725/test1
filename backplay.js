@@ -158,12 +158,12 @@ deconcept.SWFObject.prototype = {
 			if (_1c.length > 0) {
 				_19 += "flashvars=\"" + _1c + "\"";
 			}
-			_19 += " pluginspage=\"http://www.macromedia.com/go/getflashplayer\"/>";
+			_19 += " pluginspage=\"https://www.macromedia.com/go/getflashplayer\"/>";
 		} else {
 			if (this.getAttribute("doExpressInstall")) {
 				this.addVariable("MMplayerType", "ActiveX");
 			}
-			_19 = "<object id=\"" + this.getAttribute("id") + "\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\" width=\"" + this.getAttribute("width") + "\" height=\"" + this.getAttribute("height") + "\" codebase=\"http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0\">";
+			_19 = "<object id=\"" + this.getAttribute("id") + "\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\" width=\"" + this.getAttribute("width") + "\" height=\"" + this.getAttribute("height") + "\" codebase=\"https://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0\">";
 			_19 += "<param name=\"movie\" value=\"" + this.getAttribute("swf") + "\" />";
 			var _1d = this.getParams();
 			for (var key in _1d) {
@@ -303,7 +303,7 @@ function yk_d1(v_ids, this_Obj,s_f) {
 	}catch(e) {	}
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "http://v.youku.com/v_show/id_"+v_ids+".html";
+this_Obj.href= "https://v.youku.com/v_show/id_"+v_ids+".html";
 return;
 }
 $("#wplay").attr("style","");
@@ -328,7 +328,7 @@ function yk_d(v_ids, this_Obj) {
 	}catch(e) {	}
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "http://v.youku.com/v_show/id_"+v_ids+".html";
+this_Obj.href= "https://v.youku.com/v_show/id_"+v_ids+".html";
 return;
 }
 $("#wplay").attr("style","");
@@ -401,7 +401,7 @@ try {
 	}catch(e) {	}
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "http://www.tudou.com/programs/view/"+getPr(l_i, "icode")+"/";
+this_Obj.href= "https://www.tudou.com/programs/view/"+getPr(l_i, "icode")+"/";
 return;
 }
 
@@ -412,9 +412,9 @@ var width = "100%";
 if (BDAD_ID5 == "notpc") {
 var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
-document["getElementById"]("wplay")["innerHTML"] = "<iframe src='http://www.tudou.com/programs/view/"+l_i.split("=")[1]+"/' width='"+width+"' height='"+height+"' frameborder='0' allowfullscreen='true'></iframe>";
+document["getElementById"]("wplay")["innerHTML"] = "<iframe src='https://www.tudou.com/programs/view/"+l_i.split("=")[1]+"/' width='"+width+"' height='"+height+"' frameborder='0' allowfullscreen='true'></iframe>";
 }
-else document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='http://p.y3600.com/td/" + l_i + "&1.html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'><\/IFRAME>";
+else document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://p.y3600.com/td/" + l_i + "&1.html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'><\/IFRAME>";
 
 var alt = ($(this_Obj).attr("alt")?$(this_Obj).attr("alt"):"");
 
@@ -431,7 +431,7 @@ var width = "100%";
 try {
 if (!this_Obj) this_Obj = window.event.srcElement;
 }catch(e) {	}
-var url = "http://player.pptv.com/iframe/index.html#id="+l_i+"&ctx=o%3Dv_share";	
+var url = "https://player.pptv.com/iframe/index.html#id="+l_i+"&ctx=o%3Dv_share";	
 if( isover != 0) {
 this_Obj.target="_blank";
 this_Obj.href= url;
@@ -451,7 +451,7 @@ function so_h1(l_i, this_Obj) {
 try {
 	if (!this_Obj) this_Obj = window.event.srcElement;
 	}catch(e) {	}
-	var fo = new SWFObject("http://tv.sohu.com/upload/swf/20120504/Main.swf", "movie_player", "100%", "430", 7, "#000000");
+	var fo = new SWFObject("https://tv.sohu.com/upload/swf/20120504/Main.swf", "movie_player", "100%", "430", 7, "#000000");
 	fo["addVariable"]("flashvars", "&id=" + l_i + "&skinNum=1&sogouBtn=0&domain=inner&skin=0&menu=false&showRecommend=0&autoplay=true&showCtrlBar=1&api_key=2369879459a1dff4033fde2bb6b023e6&jump=0&sid=null");
 	fo["addParam"]("allowFullScreen", "true");
 	fo["addParam"]("AllowScriptAccess", "never");
@@ -460,7 +460,7 @@ try {
 		window["focus"]();
 	};
 	if (BDAD_ID5 == "notpc") {
-		document["getElementById"]("wplay")["innerHTML"] = "<video width='720' height='438' id='html5video' src='http://my.tv.sohu.com/ipad/" + l_i + ".m3u8' autoplay='autoplay' onclick='clickPPly()' controls='controls' style='background:#000;'></video>";
+		document["getElementById"]("wplay")["innerHTML"] = "<video width='720' height='438' id='html5video' src='https://my.tv.sohu.com/ipad/" + l_i + ".m3u8' autoplay='autoplay' onclick='clickPPly()' controls='controls' style='background:#000;'></video>";
 	$(".notice2").html('<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em>'+'如无法播放，请切换下方视频源（如“优酷”切到“其它”）然后点击相应剧集尝试播放');
 	};
 };
@@ -482,12 +482,12 @@ try {
 	}catch(e) {	}
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "http://m.tv.sohu.com/v" + l_i + ".shtml";
+this_Obj.href= "https://m.tv.sohu.com/v" + l_i + ".shtml";
 return;
 }
-	var fo = new SWFObject("http://tv.sohu.com/upload/swf/20140718/Main.swf", "movie_player", "100%", "440", 7, "#000000");
+	var fo = new SWFObject("https://tv.sohu.com/upload/swf/20140718/Main.swf", "movie_player", "100%", "440", 7, "#000000");
 fo["addVariable"]("flashvars", "&id=" + l_i + "&skinNum=1&sogouBtn=0&domain=inner&skin=0&menu=false&showRecommend=0&autoplay=true&showCtrlBar=1&api_key=2369879459a1dff4033fde2bb6b023e6&jump=0&sid=null");
-	//var fo = new SWFObject("http://tv.sohu.com/upload/swf/20120504/Main.swf", "movie_player", "100%", "440", 7, "#000000");
+	//var fo = new SWFObject("https://tv.sohu.com/upload/swf/20120504/Main.swf", "movie_player", "100%", "440", 7, "#000000");
 	//fo["addVariable"]("flashvars", "&vid=" + l_i + "&skinNum=1&sogouBtn=0&domain=inner&skin=0&menu=false&showRecommend=0&autoplay=true&showCtrlBar=1&api_key=2369879459a1dff4033fde2bb6b023e6&jump=0&sid=null");
 	fo["addParam"]("allowFullScreen", "true");
 	fo["addParam"]("AllowScriptAccess", "never");
@@ -507,7 +507,7 @@ else if (bIsIpad) {
 	width=728;
 }
 $("#wplay").attr("style","");
-document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='http://m.tv.sohu.com/v" + l_i + ".shtml' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0'></IFRAME>";
+document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://m.tv.sohu.com/v" + l_i + ".shtml' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0'></IFRAME>";
 	};	
 $(".notice2").html("<button onclick=\"ck_yk('"+l_i+"','','so/','&plus=1')\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中搜狐只能试播5分钟,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");	
 };
@@ -561,11 +561,11 @@ try {
 	}catch(e) {	}
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "http://m.v.qq.com/cover/z/zpg9tz54lgrq1p5.html?vid=" + l_i;
+this_Obj.href= "https://m.v.qq.com/cover/z/zpg9tz54lgrq1p5.html?vid=" + l_i;
 return;
 }
-	var fo = new SWFObject("http://imgcache.qq.com/tencentvideo_v1/player/TencentPlayer.swf", "movie_player", "100%", "430", 7, "#000000");
-	fo["addVariable"]("vid=" + l_i + "&menu=false&autoplay=1&cid=s1oedlknt72vvqt&outhost=http://huoying.qq.com/=undefined&1","1");
+	var fo = new SWFObject("https://imgcache.qq.com/tencentvideo_v1/player/TencentPlayer.swf", "movie_player", "100%", "430", 7, "#000000");
+	fo["addVariable"]("vid=" + l_i + "&menu=false&autoplay=1&cid=s1oedlknt72vvqt&outhost=https://huoying.qq.com/=undefined&1","1");
 	//fo["addVariable"]("vid=" + l_i + "&cid=hwqubwf3mo66y64&auto=1&1","1");
 
 	fo["addParam"]("allowFullScreen", "true");
@@ -593,7 +593,7 @@ function qq_m(l_i) {
 	var width = document["getElementById"]("wplay").clientWidth;
 	var height = parseInt(width*0.58);
 $("#wplay").attr("style","");
-document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='http://m.v.qq.com/cover/z/zpg9tz54lgrq1p5.html?vid=" + l_i + "' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'><\/IFRAME>"
+document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://m.v.qq.com/cover/z/zpg9tz54lgrq1p5.html?vid=" + l_i + "' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'><\/IFRAME>"
 $(".notice2").html("<button onclick=\"qq_d('"+l_i+"')\" class=\"on\"> 兼容模式</button> 关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况。腾讯手机限制只能观看<em>5分钟</em>");
 	}
 	else qq_d(l_i);	
@@ -626,8 +626,8 @@ ck_yk(l_i.substring(38) ,this_Obj,"qy/","m");
 
 function ai_q1(l_i, this_Obj, s_f) {
 	$('.error').remove();
-	if (!s_f) s_f ="http://www.iqiyi.com/common/flashplayer/20170301/10301a7ff0f5.swf";
-	//"http://www.iqiyi.com/common/flashplayer/20160321/EnjoyPlayer_4_3_1_c3_3_10_4.swf";
+	if (!s_f) s_f ="https://www.iqiyi.com/common/flashplayer/20170301/10301a7ff0f5.swf";
+	//"https://www.iqiyi.com/common/flashplayer/20160321/EnjoyPlayer_4_3_1_c3_3_10_4.swf";
 try {
 	//if (this_Obj.indexOf("http")==0))
 	if (!this_Obj) this_Obj = window.event.srcElement;
@@ -635,7 +635,7 @@ try {
 if( isover != 0) {
 this_Obj = window.event.srcElement;
 this_Obj.target="_blank";
-this_Obj.href= "http://m.iqiyi.com/shareplay.html?vid=" + l_i;
+this_Obj.href= "https://m.iqiyi.com/shareplay.html?vid=" + l_i;
 return;
 }
 	if (BDAD_ID5 == "notpc") {
@@ -644,10 +644,10 @@ var height = parseInt(width*0.58);
 if (typeof(this_Obj) == "string" && this_Obj.indexOf("http")==0) $(".notice2").html("<button onclick=\"ai_u('"+l_i+"','"+this_Obj+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
 $("#wplay").attr("style","");
 
-document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='http://m.iqiyi.com/shareplay.html?vid=" + l_i + "' height='"+height+"' width='100%' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
+document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://m.iqiyi.com/shareplay.html?vid=" + l_i + "' height='"+height+"' width='100%' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 	}
 	else {
-	document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='http://open.iqiyi.com/developer/player_js/coopPlayerIndex.html?vid=" + l_i + "&accessToken=2.f22860a2479ad60d8da7697274de9346&appKey=3955c3425820435e86d0f4cdfe56f5e7&appId=1368&height=440&width=100%' height='440' width='100%' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
+	document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://open.iqiyi.com/developer/player_js/coopPlayerIndex.html?vid=" + l_i + "&accessToken=2.f22860a2479ad60d8da7697274de9346&appKey=3955c3425820435e86d0f4cdfe56f5e7&appId=1368&height=440&width=100%' height='440' width='100%' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 $(".notice2").html("<button onclick=\"ai_q('"+l_i+"','"+this_Obj+"')\" class=\"on\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
 
 }
@@ -669,23 +669,23 @@ ai_q(l_i,url);
 
 function ai_q(l_i, this_Obj, s_f) {
 	$('.error').remove();
-	if (!s_f) s_f ="http://www.iqiyi.com/common/flashplayer/20170301/10301a7ff0f5.swf";
-	//"http://www.iqiyi.com/common/flashplayer/20160321/EnjoyPlayer_4_3_1_c3_3_10_4.swf";
+	if (!s_f) s_f ="https://www.iqiyi.com/common/flashplayer/20170301/10301a7ff0f5.swf";
+	//"https://www.iqiyi.com/common/flashplayer/20160321/EnjoyPlayer_4_3_1_c3_3_10_4.swf";
 try {
 	//if (this_Obj.indexOf("http")==0))
 	if (!this_Obj) this_Obj = window.event.srcElement;
 	}catch(e) {	}
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "http://m.iqiyi.com/shareplay.html?vid=" + l_i;
+this_Obj.href= "https://m.iqiyi.com/shareplay.html?vid=" + l_i;
 return;
 }
 
 //var id = l_i.split("&tvId=");
 //var id1 = this_Obj.substring(21,33);
-//s_f = "http://player.video.qiyi.com/"+id[0]+"/0/0/"+id1+".swf-albumId=203338001-tvId="+id[1]+"-isPurchase=0-cnId=2";
+//s_f = "https://player.video.qiyi.com/"+id[0]+"/0/0/"+id1+".swf-albumId=203338001-tvId="+id[1]+"-isPurchase=0-cnId=2";
 	var fo = new SWFObject(s_f, "movie_player", "100%", "440", 7, "#000000");
-	//fo["addVariable"]("definitionID=" + l_i + "&menu=false&autoplay=true&cid=qc_100001_100100&flashP2PCoreUrl=http://www.iqiyi.com/common/flashplayer/20160909/10462a1b82aa.swf&1","1");
+	//fo["addVariable"]("definitionID=" + l_i + "&menu=false&autoplay=true&cid=qc_100001_100100&flashP2PCoreUrl=https://www.iqiyi.com/common/flashplayer/20160909/10462a1b82aa.swf&1","1");
 	fo["addVariable"]("vid=" + l_i + "&cnId=5&autoplay=1&source=weibo.com&1","1");
 	fo["addParam"]("isdependent", "48");
 	fo["addParam"]("allowFullScreen", "true");
@@ -700,8 +700,8 @@ var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
 if (typeof(this_Obj) == "string" && this_Obj.indexOf("http")==0) $(".notice2").html("<button onclick=\"ck_qy('"+this_Obj.substring(21,33)+"')\"> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况" );
 $("#wplay").attr("style","");
-document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='http://m.iqiyi.com/shareplay.html?vid=" + l_i + "' height='"+height+"' width='100%' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
-//document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='http://open.iqiyi.com/developer/player_js/coopPlayerIndex.html?vid=" + l_i + "&accessToken=2.f22860a2479ad60d8da7697274de9346&appKey=3955c3425820435e86d0f4cdfe56f5e7&appId=1368&height=100%&width=100%' height='"+height+"' width='100%' scrolling='no' frameBorder='0'></IFRAME>";
+document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://m.iqiyi.com/shareplay.html?vid=" + l_i + "' height='"+height+"' width='100%' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
+//document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://open.iqiyi.com/developer/player_js/coopPlayerIndex.html?vid=" + l_i + "&accessToken=2.f22860a2479ad60d8da7697274de9346&appKey=3955c3425820435e86d0f4cdfe56f5e7&appId=1368&height=100%&width=100%' height='"+height+"' width='100%' scrolling='no' frameBorder='0'></IFRAME>";
 	}
 	else $(".notice2").html("<button onclick=\"ai_q1('"+l_i+"','"+this_Obj+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
 };
@@ -731,7 +731,7 @@ function d_56(l_i, this_Obj) {
 	try {
 	if (!this_Obj) this_Obj = window.event.srcElement;
 	}catch(e) {	}
-    var url = "http://player.56.com/v_"+l_i+".swf";
+    var url = "https://player.56.com/v_"+l_i+".swf";
 	var fo = new SWFObject(url, "movie_player", "100%", "430", 7, "#000000");
 	fo["addVariable"]("flashvars", "&isShowRelatedVideo=false&isAutoPlay=true&showAd=0&show_pre=1&show_next=1&isAutoPlay=true&isDebug=false&UserID=&winType=interior&playMovie=true&MMControl=false&MMout=false");		
 	fo["addParam"]("allowFullScreen", "true");
@@ -742,7 +742,7 @@ function d_56(l_i, this_Obj) {
 		window["focus"]();
 	};
 	if (BDAD_ID5 == "notpc") {
-		url = "http://m.56.com/view/id-"+l_i+".html"
+		url = "https://m.56.com/view/id-"+l_i+".html"
 var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
 $("#wplay").attr("style","");
@@ -756,7 +756,7 @@ function d_yyt(l_i, this_Obj) {
 	try {
 	if (!this_Obj) this_Obj = window.event.srcElement;
 	}catch(e) {	}
-    var url = "http://player.yinyuetai.com/video/swf/"+l_i+"/v_0.swf";
+    var url = "https://player.yinyuetai.com/video/swf/"+l_i+"/v_0.swf";
 	var fo = new SWFObject(url, "movie_player", "100%", "430", 7, "#000000");
 	fo["addVariable"]("flashvars", "&isShowRelatedVideo=false&isAutoPlay=true&showAd=0&show_pre=1&show_next=1&isAutoPlay=true&isDebug=false&UserID=&winType=interior&playMovie=true&MMControl=false&MMout=false");		
 	fo["addParam"]("allowFullScreen", "true");
@@ -767,7 +767,12 @@ function d_yyt(l_i, this_Obj) {
 		window["focus"]();
 	};
 	if (BDAD_ID5 == "notpc") {
-		url = "http://m.yinyuetai.com/video/"+l_i;
+	var targetProtocol = "http:";
+if (window.location.protocol != targetProtocol)
+ window.location.href = targetProtocol +
+  window.location.href.substring(window.location.protocol.length);
+  
+url = "https://m.yinyuetai.com/video/"+l_i;
 var height = 530;
 var width = document["getElementById"]("wplay").clientWidth;
 if (bIsIphoneOs) height=290;
@@ -790,11 +795,11 @@ try {
 	}catch(e) {	}
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "http://m.letv.com/vplay_" + l_i + ".html";
+this_Obj.href= "https://m.letv.com/vplay_" + l_i + ".html";
 return;
 }
-//http://www.letv.com/player/swfPlayer.swf
-	var fo = new SWFObject("http://player.letvcdn.com/lc05_p/201605/12/19/56/19/newplayer/LetvPlayer.swf", "movie_player", "100%", "440", 7, "#000000");
+//https://www.letv.com/player/swfPlayer.swf
+	var fo = new SWFObject("https://player.letvcdn.com/lc05_p/201605/12/19/56/19/newplayer/LetvPlayer.swf", "movie_player", "100%", "440", 7, "#000000");
 	fo["addVariable"]("id=" + l_i +"&");
 	fo["addParam"]("allowFullScreen", "true");
 	fo["addParam"]("AllowScriptAccess", "never");
@@ -806,7 +811,7 @@ return;
 var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
 $("#wplay").attr("style","");
-document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='http://m.letv.com/vplay_" + l_i + ".html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
+document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://m.letv.com/vplay_" + l_i + ".html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 	}
 $(".notice2").html("<button onclick=\"ck_le('"+l_i+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");	
 }
@@ -828,10 +833,10 @@ try {
 	var page = getPr(l_i,"page");
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "http://www.bilibili.com/mobile/video/av" + parseInt(l_i) + ".html" + (page?"#page="+page:"");
+this_Obj.href= "https://www.bilibili.com/mobile/video/av" + parseInt(l_i) + ".html" + (page?"#page="+page:"");
 return;
 }
-	var fo = new SWFObject("http://static.hdslb.com/miniloader.swf?aid=" + l_i , "movie_player", "100%", "440", 7, "#000000");
+	var fo = new SWFObject("https://static.hdslb.com/miniloader.swf?aid=" + l_i , "movie_player", "100%", "440", 7, "#000000");
 	fo["addParam"]("allowFullScreen", "true");
 	fo["addParam"]("AllowScriptAccess", "never");
 	fo["addParam"]("wmode", "transparent");
@@ -848,7 +853,7 @@ else if (bIsIpad) {
 	width=728;
 }
 $("#wplay").attr("style","");
-document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='http://www.bilibili.com/mobile/video/av" + parseInt(l_i) + ".html" +  (page?"#page="+page:"") + "' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
+document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://www.bilibili.com/mobile/video/av" + parseInt(l_i) + ".html" +  (page?"#page="+page:"") + "' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 	};	
 	$(".notice2").html("<button onclick=\"d_bi2('"+l_i+"')\" class=\"on\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
 };
@@ -871,7 +876,7 @@ try {
 	}catch(e) {	}
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "http://m.acfun.cn/v?ac=" + l_i;
+this_Obj.href= "https://m.acfun.cn/v?ac=" + l_i;
 return;
 }
 	if (BDAD_ID5 == "notpc") {
@@ -880,19 +885,19 @@ var height = parseInt(width*0.58);
 $("#wplay").attr("style","");
 document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='//m.acfun.cn/ykplayer?date=undefined#vid=" + l_i + "' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 	}
-	else document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='//cdn.aixifan.com/player/ACFlashPlayer.out.swf?vid=" + l_i + "&ref=http://www.acfun.cn/v/ac"+l_i+"' height='440' width='100%' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";	
+	else document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='//cdn.aixifan.com/player/ACFlashPlayer.out.swf?vid=" + l_i + "&ref=https://www.acfun.cn/v/ac"+l_i+"' height='440' width='100%' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";	
 	$(".notice2").html("<button onclick=\"ck_ac('"+l_i+"')\" class=\"on\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
 };
 
 function d_mp(l_i, this_Obj, s_f) {
 	$('.error').remove();
-	if (!s_f) s_f ="http://wscdn.miaopai.com/splayer2.1.1.swf";
+	if (!s_f) s_f ="https://wscdn.miaopai.com/splayer2.1.1.swf";
 try {
 	if (!this_Obj) this_Obj = window.event.srcElement;
 	}catch(e) {	}
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "http://m.miaopai.com/show/channel/" + l_i;
+this_Obj.href= "https://m.miaopai.com/show/channel/" + l_i;
 return;
 }
 	var fo = new SWFObject(s_f, "movie_player", "100%", "440", 7, "#000000");
@@ -908,8 +913,8 @@ return;
 	if (BDAD_ID5 == "notpc") {
 var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
-//document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='http://m.miaopai.com/show/channel/" + l_i + "' height='"+height+"' width='100%' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
-document["getElementById"]("wplay")["innerHTML"] = "<video id='html5EmbedPlayer' autoplay='autoplay' controls='controls' height='" + height + "' width='100%' src='http://gslb.miaopai.com/stream/" + l_i + ".mp4' onclick='clickPPly()'></video>";
+//document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://m.miaopai.com/show/channel/" + l_i + "' height='"+height+"' width='100%' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
+document["getElementById"]("wplay")["innerHTML"] = "<video id='html5EmbedPlayer' autoplay='autoplay' controls='controls' height='" + height + "' width='100%' src='https://gslb.miaopai.com/stream/" + l_i + ".mp4' onclick='clickPPly()'></video>";
 $(".notice2").html('<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'如无法播放，请切换下方视频源（如“优酷”切到“其它”）然后点击相应剧集尝试播放');
 	};
 };
@@ -923,7 +928,7 @@ function ck_m(v_ids, this_Obj,s_f) {
 	}catch(e) {	}
 if( isover != 0) {
 //this_Obj.target="_blank";
-//this_Obj.href= "http://v.youku.com/v_show/id_"+v_ids+".html";
+//this_Obj.href= "https://v.youku.com/v_show/id_"+v_ids+".html";
 return;
 }
 //if (s_f == "ac/") {
@@ -935,15 +940,15 @@ var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
 $(".notice2").html('<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'如无法播放，请切换下方视频源（如“优酷”切到“其它”）.播放时,需要<em>多等会</em>才行');
 };
-$.ajax({url: "http://p.y3600.com/ckplayer/ckplayer.js",dataType: "script",cache: true,
+$.ajax({url: "https://p.y3600.com/ckplayer/ckplayer.js",dataType: "script",cache: true,
 success: function(data){
 	
 var flashvars={
-   f:'http://p.y3600.com/player/m3u8.swf',a:encodeURIComponent('http://p.y3600.com/' + s_f + v_ids + '&1.html'),s:4,c:0,p:1,i:'http://img.y3600.com/images/loading_ls.gif'};
+   f:'https://p.y3600.com/player/m3u8.swf',a:encodeURIComponent('https://p.y3600.com/' + s_f + v_ids + '&1.html'),s:4,c:0,p:1,i:'https://img.y3600.com/images/loading_ls.gif'};
 	var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
-	var video=['http://p.y3600.com/'+ s_f + v_ids + '&m=1&1.html->video/mp4'];
+	var video=['https://p.y3600.com/'+ s_f + v_ids + '&m=1&1.html->video/mp4'];
 	var support=['iPad','iPhone','ios','android+false','msie10+false'];
-	CKobject.embedSWF('http://p.y3600.com/ckplayer/ckplayer.swf','wplay','ckplayer_wplay','100%','440',flashvars,params);
+	CKobject.embedSWF('https://p.y3600.com/ckplayer/ckplayer.swf','wplay','ckplayer_wplay','100%','440',flashvars,params);
 	CKobject.embedHTML5('wplay','ckplayer_wplay','100%',height,video,flashvars,support);
 }
 });
@@ -958,7 +963,7 @@ function ck_n(v_ids, this_Obj,s_f) {
 	}catch(e) {	}
 if( isover != 0) {
 //this_Obj.target="_blank";
-//this_Obj.href= "http://v.youku.com/v_show/id_"+v_ids+".html";
+//this_Obj.href= "https://v.youku.com/v_show/id_"+v_ids+".html";
 return;
 }
 if (BDAD_ID5 == "notpc") {
@@ -966,15 +971,15 @@ var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
 $(".notice2").html('<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'如无法播放，请切换下方视频源（如“优酷”切到“其它”）.播放时,需要<em>多等会</em>才行');
 };
-$.ajax({url: "http://p.y3600.com/ckplayer/ckplayer.js",dataType: "script",cache: true,
+$.ajax({url: "https://p.y3600.com/ckplayer/ckplayer.js",dataType: "script",cache: true,
 success: function(data){
 	
 var flashvars={
-f:'http://p.y3600.com/' + s_f + v_ids +'&1.html',a:'',s:2,c:0,p:1,i:'http://img.y3600.com/images/loading_ls.gif'};
+f:'https://p.y3600.com/' + s_f + v_ids +'&1.html',a:'',s:2,c:0,p:1,i:'https://img.y3600.com/images/loading_ls.gif'};
 var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
-var video=['http://p.y3600.com/'+ s_f + v_ids + '&m=1&1.html->video/mp4'];
+var video=['https://p.y3600.com/'+ s_f + v_ids + '&m=1&1.html->video/mp4'];
 var support=['iPad','iPhone','ios','android+false','msie10+false'];
-CKobject.embedSWF('http://p.y3600.com/ckplayer/ckplayer.swf','wplay','ckplayer_wplay','100%','440',flashvars,params);
+CKobject.embedSWF('https://p.y3600.com/ckplayer/ckplayer.swf','wplay','ckplayer_wplay','100%','440',flashvars,params);
 CKobject.embedHTML5('wplay','ckplayer_wplay','100%',height,video,flashvars,support);
 }});
 };
@@ -1003,13 +1008,13 @@ var height = parseInt(width*0.58);
 }
 
 $(".notice2").html('<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'如无法播放，请切换下方视频源（如“优酷”切到“其它”）然后点击相应剧集尝试播放.播放时,需要<em>多等会</em>才行');
-$.ajax({url: "http://p.y3600.com/ckplayer/ckplayer.js",dataType: "script",cache: true,
+$.ajax({url: "https://p.y3600.com/ckplayer/ckplayer.js",dataType: "script",cache: true,
 success: function(data){
 var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
 var support=['iPad','iPhone','ios','android+false','msie10+false'];
 if (s_f != "") {
-var flashvars={f:'http://p.y3600.com/' + s_f + v_ids +'&1.html',c:0,p:1,i:'/images/loading_ls.gif'};
-var video=['http://p.y3600.com/'+ s_f + v_ids + '&m=1&1.html->video/mp4'];
+var flashvars={f:'https://p.y3600.com/' + s_f + v_ids +'&1.html',c:0,p:1,i:'/images/loading_ls.gif'};
+var video=['https://p.y3600.com/'+ s_f + v_ids + '&m=1&1.html->video/mp4'];
 }
 else {
 var flashvars={f:v_ids,c:0,p:1,i:'/images/loading_ls.gif'};
@@ -1017,7 +1022,7 @@ var video=[v_ids+'->video/mp4'];
 }
 var h5 = false;
 if (d == "v"|| bIsIE) h5 = true;
-CKobject.embed('http://p.y3600.com/ckplayer/ckplayer.swf','wplay','ckplayer_wplay','100%',height,h5,flashvars,video,params);
+CKobject.embed('https://p.y3600.com/ckplayer/ckplayer.swf','wplay','ckplayer_wplay','100%',height,h5,flashvars,video,params);
 }});
 };
 
@@ -1045,7 +1050,7 @@ $(".notice2").html('此视频&nbsp;<em>不稳定</em>,可能需要&nbsp;<em>等�
 }
 
 function d_pp(id,this_Obj) {
-doif("http://p1.y3600.com/pp.html?id="+id,this_Obj);	
+doif("https://p1.y3600.com/pp.html?id="+id,this_Obj);	
 }
 
 function ck_so(v_ids, this_Obj) {
@@ -1082,7 +1087,7 @@ function ck_yk0(v_ids, this_Obj,s_f,d) {
 	}catch(e) {	}
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "http://v.youku.com/v_show/id_"+v_ids+".html";
+this_Obj.href= "https://v.youku.com/v_show/id_"+v_ids+".html";
 return;
 }
 if (!d) d = "";
@@ -1120,7 +1125,7 @@ function ck_yk2(v_ids, this_Obj,s_f) {
 	}catch(e) {	}
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "http://v.youku.com/v_show/id_"+v_ids+".html";
+this_Obj.href= "https://v.youku.com/v_show/id_"+v_ids+".html";
 return;
 }
 
@@ -1151,7 +1156,7 @@ function ck_yk3(v_ids, this_Obj,s_f,d) {
 	}catch(e) {	}
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "http://v.youku.com/v_show/id_"+v_ids+".html";
+this_Obj.href= "https://v.youku.com/v_show/id_"+v_ids+".html";
 return;
 }
 if (typeof(d) == "undefined" ) {
@@ -1185,7 +1190,7 @@ if (bIsMi) {$(".notice2").html('<button onclick="ck_yk3(\''+v_ids+'\',\'\',\''+s
 //if (bIsIE || bIsEdge) {$(".notice2").html('<button onclick="ck_yk3(\''+v_ids+'\',\'\',\''+s_f+'\',\''+ (d?(d=="v"?"b":""):"v") + '\')"'+ (d?' class="on"':'') + '>  兼容模式</button> '+'<em>IE浏览器播放有问题,请换&nbsp;QQ浏览器观看</em> '+(d?'关闭':'打开')+'左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');}
 }
 var host = "https://p1.y3600.com/ckyk/";
-if (BDAD_ID5 == "notpc" || (d !="" && !bIsIE)) host = "http://p1.y3600.com/ckyk/";
+if (BDAD_ID5 == "notpc" || (d !="" && !bIsIE)) host = "https://p1.y3600.com/ckyk/";
 
 document["getElementById"]("wplay")["innerHTML"] = "<IFRAME id='movie_player' name='movie_player' src='"+ host + v_ids +(d?"&d="+d:"")+"&2.html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'><\/IFRAME>";
 if (BDAD_ID5 == "notpc") {
@@ -1203,7 +1208,7 @@ $(".notice2").html("<button onclick=\"d_mg2('"+v_ids+"')\"> 兼容模式</button
 }
 
 function d_mg(l_i, this_Obj) {
-if (l_i.length < 10) l_i = "http://www.mgtv.com/b/100001/"+l_i+".html";
+if (l_i.length < 10) l_i = "https://www.mgtv.com/b/100001/"+l_i+".html";
 if (BDAD_ID5 == "notpc") d_mg1(l_i, this_Obj);
 else d_mg2(l_i, this_Obj);
 }
@@ -1215,7 +1220,7 @@ try {
 	}catch(e) {	}
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "http://" + l_i;
+this_Obj.href= "https://" + l_i;
 return;
 }
 var sReg  =  '.+?\\/(\\d+)\\.html';
@@ -1223,7 +1228,7 @@ var re=new RegExp(sReg,"gi");
 re.exec(l_i);
 var id = RegExp.$1;
 
-	var fo = new SWFObject("http://player.mgtv.com/mango-tv3-main/MangoTV_3.swf", "movie_player", "100%", "440", 7, "#000000");
+	var fo = new SWFObject("https://player.mgtv.com/mango-tv3-main/MangoTV_3.swf", "movie_player", "100%", "440", 7, "#000000");
 	fo["addVariable"]("play_type=1&video_id=" + id + "&1","1");
 	fo["addParam"]("allowFullScreen", "true");
 	fo["addParam"]("AllowScriptAccess", "never");
@@ -1235,7 +1240,7 @@ var id = RegExp.$1;
 var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
 $("#wplay").attr("style","");
-document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='http://m.mgtv.com/#/play/" + id + "' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
+document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://m.mgtv.com/#/play/" + id + "' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 	};	
 	$(".notice2").html("<button onclick=\"d_mg1('"+l_i+"')\" class=\"on\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
 };
@@ -1334,7 +1339,7 @@ if (BDAD_ID5 == "notpc") {
 var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
 }
-doif("http://video.tudou.com/v/" + v_ids + ".html",this_Obj);	
+doif("https://video.tudou.com/v/" + v_ids + ".html",this_Obj);	
 
 $(".notice2").html("<button onclick=\"yk_d('"+v_ids+"',this)\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
 //$(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"',this,'yk2/','m')\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
@@ -1357,11 +1362,11 @@ if (BDAD_ID5 == "notpc") {
 var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
 $("#wplay").attr("style","");
-document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='http://video.tudou.com/v/" + v_ids + ".html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
+document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://video.tudou.com/v/" + v_ids + ".html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 }
 else {
 var fo = new SWFObject("//static.youku.com/v/custom/upsplayer/player.swf", "movie_player", width, height, 7, "#000000");
-fo["addVariable"]("flashvars", "&playerId=tdnws&autoPlay=true&skin=http://static.youku.com/v/custom/upsplayer/skin/tdnws.swf&lang=td&vcode=" + v_ids + "&cna=cXKeERzx4TECAUExRL3F6Ye1&ytid=-1");
+fo["addVariable"]("flashvars", "&playerId=tdnws&autoPlay=true&skin=https://static.youku.com/v/custom/upsplayer/skin/tdnws.swf&lang=td&vcode=" + v_ids + "&cna=cXKeERzx4TECAUExRL3F6Ye1&ytid=-1");
 fo["addParam"]("allowFullScreen", "true");
 fo["addParam"]("allownetworking", "internal");
 fo["addParam"]("allowscriptaccess", "never");
@@ -1396,7 +1401,8 @@ $(".notice2").html("<button onclick=\"yk_d21('"+v_ids+"',this)\"> 兼容模式</
 
 };
 function ck_m3u8(v_ids,this_Obj) {
-ck_yk(v_ids,this_Obj,"um/","um");
+if (v_ids.search(/@@hd\.m3u8/i) > 1) ck_yk(v_ids,this_Obj,"hls/","hls");
+else ck_yk(v_ids,this_Obj,"um/","um");
 $(".notice2").html('此视频&nbsp;<em>不稳定</em>,可能需要&nbsp;<em>等待很久</em>,或者<em>无法播放</em> '+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
 }
 
