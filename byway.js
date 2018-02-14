@@ -16,6 +16,7 @@ try {
 if( typeof(ising) != "undefined") {
 var playing = parseInt(getPr(location.search, "ing"));
 $("#playlist a").each(function(i,o) {
+$(o).attr("ing",i);
 if (!iswork) {
 if ( i == playing) {
 document.title = "《"+title + "》- " + o.innerText + "_热播韩剧网";
@@ -229,9 +230,16 @@ function ck_bam(v_ids,this_Obj) {
 }
 
 function pan27(v_ids,this_Obj) {
-document["getElementById"]("wplay")["innerHTML"]="";
-$(".notice2").html('此视频&nbsp;<em>出现故障。我们会逐步更新</em> '+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
-//doif('http://api2.36cj.com/?vid='+v_ids,this_Obj,0,0,'default');
+	try {
+	if (!this_Obj) this_Obj = window.event.srcElement;
+	}catch(e) {	}
+//document["getElementById"]("wplay")["innerHTML"]="";
+//$(".notice2").html('此视频&nbsp;<em>出现故障。我们会逐步更新</em> '+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+var targetProtocol = "http:";
+if (window.location.protocol != targetProtocol) {
+window.location.href = targetProtocol + window.location.href.substring(window.location.protocol.length)+"?ing="+ $(this_Obj).attr("ing");
+}
+doif('http://api2.my230.com/?vid='+v_ids,this_Obj,0,0,'default');
 }
 function PAN27(v_ids,this_Obj) {pan27(v_ids,this_Obj);}
 
