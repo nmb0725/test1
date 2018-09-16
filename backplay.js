@@ -293,10 +293,11 @@ var Request = new QueryString();
 
 function yk_d12(v_ids, this_Obj) {
 	yk_d22(v_ids, this_Obj);
-	$(".notice2").html("<button onclick=\"yk_d1('"+v_ids+"',this)\" class=\"on\"> 兼容模式</button> " +"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
+	$(".notice2").html("<button onclick=\"yk_d1('"+v_ids+"',this)\" class=\"on\"> 兼容模式</button> " +"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况");
 }
 
 function yk_d1(v_ids, this_Obj,s_f) {
+v_ids=v_ids.replace(/([^=])=+$/, "$1==");
 	$('.error').remove();
 	try {
 	if (!this_Obj) this_Obj = window.event.srcElement;
@@ -315,22 +316,24 @@ var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
 }
 
-document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='//player.youku.com/embed/" + v_ids + "' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
+document["getElementById"]("wplay")["innerHTML"] = "<IFRAME id='movie_player' name='movie_player' src='//player.youku.com/embed/" + v_ids + "' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 
-if (s_f == 1) $(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"', this,'yk2/','m')\" class='on'> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> ' +"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况"); 
-else $(".notice2").html("<button onclick=\"ck_yk2('"+v_ids+"',this,0)\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> ' +"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
+if (s_f == 1) $(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"', this,'yk2/','m')\" class='on'> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> ' +"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况"); 
+else $(".notice2").html("<button onclick=\"ck_yk2('"+v_ids+"',this,0)\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> ' +"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况");
 };
 
 function yk_d(v_ids, this_Obj) {
+v_ids=v_ids.replace(/([^=])=+$/, "$1==");
 	$('.error').remove();
 	try {
 	if (!this_Obj) this_Obj = window.event.srcElement;
 	}catch(e) {	}
 if( isover != 0) {
 this_Obj.target="_blank";
-this_Obj.href= "https://v.youku.com/v_show/id_"+v_ids+".html";
+this_Obj.href= "//v.youku.com/v_show/id_"+v_ids+".html";
 return;
 }
+
 $("#wplay").attr("style","");
 var height = 450;
 var width = "100%";
@@ -338,17 +341,24 @@ var width = "100%";
 if (BDAD_ID5 == "notpc") {
 var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
-}
-
-yk_d1(v_ids,this_Obj);
 
 if (v_ids.substring(0,3) == "XMT") {
-$(".notice2").html("<button onclick=\"ck_yk2('"+v_ids+"',this,0)\" class='on'> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
+yk_d2(v_ids,this_Obj);
+//ck_yk(v_ids, this_Obj,'yk2/','m');
+//$(".notice2").html("<button onclick=\"ck_yk2('"+v_ids+"',this,0)\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况");
 }
 else {
-$(".notice2").html("<button onclick=\"yk_d12('"+v_ids+"',this)\" class='on'> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
+//yk_d12(v_ids,this_Obj);
+yk_d1(v_ids,this_Obj);
+//ck_yk(v_ids, this_Obj,'yk2/','m');
+$(".notice2").html("<button onclick=\"yk_d12('"+v_ids+"',this,1)\" class1='on'> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> ' + "打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况。"+(bIsWX?"":"关注微信号<a href=\"/m_weixin1.html\" target=\"_blank\"><em>\"y3600_com\"</em></a>了解韩剧最新资讯"));
 }
-
+return;
+}
+//yk_d12(v_ids, this_Obj);
+yk_d1(v_ids,this_Obj);
+//ck_yk(v_ids, this_Obj,'yk2/','m');
+$(".notice2").html("<button onclick=\"yk_d12('"+v_ids+"',this,1)\" class1='on'> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> ' + "打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况。"+(bIsWX?"":"关注微信号<a href=\"/m_weixin1.html\" target=\"_blank\"><em>\"y3600_com\"</em></a>了解韩剧最新资讯"));
 };
 
 function t_hn1(l_i, this_Obj, s_f) {
@@ -359,13 +369,14 @@ function t_hn1(l_i, this_Obj, s_f) {
 function t_hn(l_i, this_Obj, s_f) {
 	$('.error').remove();
 	if (!isNaN(l_i)) {
-tyun(l_i);
+document["getElementById"]("wplay")["innerHTML"] = "";
+$(".notice2").html("<em>该视频已经&nbsp;!!!失效!!!</em> 请切换下方的<em>其它</em>至<em>其它</em>,可改善无法播放或者卡顿等情况");
 return;
     }
 	if (l_i.indexOf("&icode=")<=0) l_i = l_i +"&icode="+l_i;
 t_hm1(l_i,this_Obj);
 //yk_d22(l_i,this_Obj);
-//$(".notice2").html("<button onclick=\"t_hm('"+l_i+"',this)\"> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
+//$(".notice2").html("<button onclick=\"t_hm('"+l_i+"',this)\"> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况");
 };
 
 function t_hm1(l_i, this_Obj, s_f) {
@@ -390,8 +401,8 @@ $("#wplay").attr("style","");
 doif("https://www.tudou.com/programs/view/"+l_i.split("=")[1]+'/',this_Obj);	
 
 var alt = ($(this_Obj).attr("alt")?$(this_Obj).attr("alt"):"");
-//$(".notice2").html("<button onclick=\"ck_yk('"+l_i+"',this,'tyk/','m')\" class=\"on\" alt=\""+ alt +"\"> 兼容模式</button>" + (alt ? '<b style="color:#8ad137">密码:' + alt +'</b>&nbsp;':"") + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况" );
-//$(".notice2").html("<button onclick=\"ck_tyk('"+l_i+"',this,'tyk1/')\" class=\"on\" alt=\""+ alt +"\"> 兼容模式</button>" + (alt ? '<b style="color:#8ad137">密码:' + alt +'</b>&nbsp;':"") + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况" );
+//$(".notice2").html("<button onclick=\"ck_yk('"+l_i+"',this,'tyk/','m')\" class=\"on\" alt=\""+ alt +"\"> 兼容模式</button>" + (alt ? '<b style="color:#8ad137">密码:' + alt +'</b>&nbsp;':"") + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况" );
+//$(".notice2").html("<button onclick=\"ck_tyk('"+l_i+"',this,'tyk1/')\" class=\"on\" alt=\""+ alt +"\"> 兼容模式</button>" + (alt ? '<b style="color:#8ad137">密码:' + alt +'</b>&nbsp;':"") + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况" );
 };
 
 function t_hm(l_i, this_Obj, s_f) {
@@ -418,7 +429,7 @@ else document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://p.
 
 var alt = ($(this_Obj).attr("alt")?$(this_Obj).attr("alt"):"");
 
-$(".notice2").html("<button onclick=\"ck_yk('"+l_i+"',this,'tyk/','m')\" class=\"on\" alt=\""+ alt +"\"> 兼容模式</button>" + (alt ? '<b style="color:#8ad137">密码:' + alt +'</b>&nbsp;':"") + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况" );
+$(".notice2").html("<button onclick=\"ck_yk('"+l_i+"',this,'tyk/','m')\" class=\"on\" alt=\""+ alt +"\"> 兼容模式</button>" + (alt ? '<b style="color:#8ad137">密码:' + alt +'</b>&nbsp;':"") + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况" );
 };
 
 function t_ho(l_i, this_Obj) {t_hn(l_i, this_Obj);}
@@ -443,7 +454,7 @@ var height = parseInt(width*0.58);
 }
 $("#wplay").attr("style","");
 document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='" + url + "' height='"+height+"px' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
-$(".notice2").html('<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em>'+'切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情況');
+$(".notice2").html('<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em>'+'切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情況');
 };
 
 function so_h1(l_i, this_Obj) {
@@ -469,7 +480,7 @@ function so_h3(v_ids, this_Obj) {
 	/*
 	if (BDAD_ID5 == "notpc") {
 	ck_yk(v_ids, this_Obj,'so/');
-$(".notice2").html("<button onclick=\"so_h4('"+v_ids+"')\"> 兼容模式</button> 打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况" + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em>');
+$(".notice2").html("<button onclick=\"so_h4('"+v_ids+"')\"> 兼容模式</button> 打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况" + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em>');
 	}
 	else */
 	so_h4(v_ids, this_Obj);
@@ -509,7 +520,7 @@ else if (bIsIpad) {
 $("#wplay").attr("style","");
 document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://m.tv.sohu.com/v" + l_i + ".shtml' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0'></IFRAME>";
 	};	
-$(".notice2").html("<button onclick=\"ck_yk('"+l_i+"','','so/','&plus=1')\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中搜狐只能试播5分钟,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");	
+$(".notice2").html("<button onclick=\"ck_yk('"+l_i+"','','so/','&plus=1')\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中搜狐只能试播5分钟,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况");	
 };
 function yk_b(v_i, th_is) {
 	yk_d(v_i - 8, th_is);
@@ -551,7 +562,7 @@ function qq(l_i, this_Obj) {qq_d(l_i,this_Obj);}
 
 function ck_qq(l_i, this_Obj) {
 ck_yk(l_i, this_Obj,'tx/');
-$(".notice2").html("<button onclick=\"qq_d('"+l_i+"')\" class='on'> 兼容模式</button> 腾讯要<em>等1分钟</em>才会播放. " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");	
+$(".notice2").html("<button onclick=\"qq_d('"+l_i+"')\" class='on'> 兼容模式</button> 腾讯要<em>等1分钟</em>才会播放. " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况");	
 };
 
 function qq_d(l_i, this_Obj) {
@@ -564,6 +575,8 @@ this_Obj.target="_blank";
 this_Obj.href= "https://m.v.qq.com/cover/z/zpg9tz54lgrq1p5.html?vid=" + l_i;
 return;
 }
+var targetProtocol = "https:";
+if(navigator.userAgent.indexOf("Windows NT 5")>=0) targetProtocol = "http:";
 	var fo = new SWFObject("https://imgcache.qq.com/tencentvideo_v1/player/TencentPlayer.swf", "movie_player", "100%", "430", 7, "#000000");
 	fo["addVariable"]("vid=" + l_i + "&menu=false&autoplay=1&cid=s1oedlknt72vvqt&outhost=https://huoying.qq.com/=undefined&1","1");
 	//fo["addVariable"]("vid=" + l_i + "&cid=hwqubwf3mo66y64&auto=1&1","1");
@@ -574,15 +587,15 @@ return;
 	if (!fo["write"]("wplay")) {
 		window["focus"]();
 	};
-	$(".notice2").html("<button onclick=\"ck_qq('"+l_i+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");	
+	$(".notice2").html("<button onclick=\"ck_qq('"+l_i+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况");	
 	if (BDAD_ID5 == "notpc") {
 var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
 $("#wplay").attr("style","");
 //ck_qq(l_i, this_Obj);
-document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://p1.y3600.com/qq/" + l_i + "&1.html' height='"+parseInt(width*0.69)+"' width='"+width+"' scrolling='no' frameBorder='0'><\/IFRAME>";
+document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='"+targetProtocol+"//p1.y3600.com/qq/" + l_i + "&1.html' height='"+parseInt(width*0.69)+"' width='"+width+"' scrolling='no' frameBorder='0'><\/IFRAME>";
 //document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://p1.y3600.com/qq.html?id=" + l_i + "' height='"+parseInt(width*0.69)+"' width='"+width+"' scrolling='no' frameBorder='0'><\/IFRAME>";
-	$(".notice2").html("<button onclick=\"qq_m('"+l_i+"')\"> 兼容模式</button> 腾讯在手机上<em>要等很久</em>才能播放. " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
+	$(".notice2").html("<button onclick=\"qq_m('"+l_i+"')\"> 兼容模式</button> 腾讯在手机上<em>要等很久</em>才能播放. " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况");
 	}
 };
 
@@ -594,7 +607,7 @@ function qq_m(l_i) {
 	var height = parseInt(width*0.58);
 $("#wplay").attr("style","");
 document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://m.v.qq.com/cover/z/zpg9tz54lgrq1p5.html?vid=" + l_i + "' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'><\/IFRAME>"
-$(".notice2").html("<button onclick=\"qq_d('"+l_i+"')\" class=\"on\"> 兼容模式</button> 关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况。腾讯手机限制只能观看<em>5分钟</em>");
+$(".notice2").html("<button onclick=\"qq_d('"+l_i+"')\" class=\"on\"> 兼容模式</button> 关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况。腾讯手机限制只能观看<em>5分钟</em>");
 	}
 	else qq_d(l_i);	
 };
@@ -641,14 +654,14 @@ return;
 	if (BDAD_ID5 == "notpc") {
 var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
-if (typeof(this_Obj) == "string" && this_Obj.indexOf("http")==0) $(".notice2").html("<button onclick=\"ai_u('"+l_i+"','"+this_Obj+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
+if (typeof(this_Obj) == "string" && this_Obj.indexOf("http")==0) $(".notice2").html("<button onclick=\"ai_u('"+l_i+"','"+this_Obj+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况");
 $("#wplay").attr("style","");
 
 document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://m.iqiyi.com/shareplay.html?vid=" + l_i + "' height='"+height+"' width='100%' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 	}
 	else {
 	document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://open.iqiyi.com/developer/player_js/coopPlayerIndex.html?vid=" + l_i + "&accessToken=2.f22860a2479ad60d8da7697274de9346&appKey=3955c3425820435e86d0f4cdfe56f5e7&appId=1368&height=440&width=100%' height='440' width='100%' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
-$(".notice2").html("<button onclick=\"ai_q('"+l_i+"','"+this_Obj+"')\" class=\"on\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
+$(".notice2").html("<button onclick=\"ai_q('"+l_i+"','"+this_Obj+"')\" class=\"on\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况");
 
 }
 	if (!fo["write"]("wplay")) {
@@ -698,12 +711,12 @@ return;
 	if (BDAD_ID5 == "notpc") {
 var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
-if (typeof(this_Obj) == "string" && this_Obj.indexOf("http")==0) $(".notice2").html("<button onclick=\"ck_qy('"+this_Obj.substring(21,33)+"')\"> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况" );
+if (typeof(this_Obj) == "string" && this_Obj.indexOf("http")==0) $(".notice2").html("<button onclick=\"ck_qy('"+this_Obj.substring(21,33)+"')\"> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况" );
 $("#wplay").attr("style","");
 document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://m.iqiyi.com/shareplay.html?vid=" + l_i + "' height='"+height+"' width='100%' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 //document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://open.iqiyi.com/developer/player_js/coopPlayerIndex.html?vid=" + l_i + "&accessToken=2.f22860a2479ad60d8da7697274de9346&appKey=3955c3425820435e86d0f4cdfe56f5e7&appId=1368&height=100%&width=100%' height='"+height+"' width='100%' scrolling='no' frameBorder='0'></IFRAME>";
 	}
-	else $(".notice2").html("<button onclick=\"ai_q1('"+l_i+"','"+this_Obj+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
+	else $(".notice2").html("<button onclick=\"ai_q1('"+l_i+"','"+this_Obj+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况");
 };
 
 function doswf(url) {
@@ -768,9 +781,7 @@ function d_yyt(l_i, this_Obj) {
 	};
 	if (BDAD_ID5 == "notpc") {
 	var targetProtocol = "http:";
-if (window.location.protocol != targetProtocol)
- window.location.href = targetProtocol +
-  window.location.href.substring(window.location.protocol.length);
+if (window.location.protocol != targetProtocol) window.location.href = targetProtocol + window.location.href.substring(window.location.protocol.length);
   
 url = "https://m.yinyuetai.com/video/"+l_i;
 var height = 530;
@@ -786,7 +797,7 @@ $("#wplay").attr("style","");
 
 function ck_le(v_ids, this_Obj) {
 ck_yk(v_ids, this_Obj,'le/',"m");
-$(".notice2").html("<button onclick=\"d_le('"+v_ids+"')\" class='on'> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
+$(".notice2").html("<button onclick=\"d_le('"+v_ids+"')\" class='on'> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况");
 }
 function d_le(l_i, this_Obj) {
 	$('.error').remove();
@@ -813,7 +824,7 @@ var height = parseInt(width*0.58);
 $("#wplay").attr("style","");
 document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://m.letv.com/vplay_" + l_i + ".html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 	}
-$(".notice2").html("<button onclick=\"ck_le('"+l_i+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");	
+$(".notice2").html("<button onclick=\"ck_le('"+l_i+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况");	
 }
 
 function d_bi(v_ids, this_Obj) {
@@ -821,8 +832,8 @@ d_bi1(v_ids, this_Obj);
 }
 
 function d_bi2(v_ids, this_Obj) {
-ck_yk(v_ids, this_Obj,'bi/');
-$(".notice2").html("<button onclick=\"d_bi1('"+v_ids+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
+ck_yk(v_ids, this_Obj,'bi/','v');
+$(".notice2").html("<button onclick=\"d_bi1('"+v_ids+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况");
 }
 function d_bi1(l_i, this_Obj) {
 	$('.error').remove();
@@ -855,13 +866,13 @@ else if (bIsIpad) {
 $("#wplay").attr("style","");
 document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://www.bilibili.com/mobile/video/av" + parseInt(l_i) + ".html" +  (page?"#page="+page:"") + "' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 	};	
-	$(".notice2").html("<button onclick=\"d_bi2('"+l_i+"')\" class=\"on\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
+	$(".notice2").html("<button onclick=\"d_bi2('"+l_i+"')\" class=\"on\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况");
 };
 
 
 function ck_ac(v_ids, this_Obj) {
 ck_yk(v_ids, this_Obj,'ac/');
-$(".notice2").html("<button onclick=\"d_ac2('"+v_ids+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
+$(".notice2").html("<button onclick=\"d_ac2('"+v_ids+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况");
 }
 
 function d_ac(v_ids, this_Obj) {
@@ -886,7 +897,7 @@ $("#wplay").attr("style","");
 document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='//m.acfun.cn/ykplayer?date=undefined#vid=" + l_i + "' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 	}
 	else document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='//cdn.aixifan.com/player/ACFlashPlayer.out.swf?vid=" + l_i + "&ref=https://www.acfun.cn/v/ac"+l_i+"' height='440' width='100%' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";	
-	$(".notice2").html("<button onclick=\"ck_ac('"+l_i+"')\" class=\"on\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
+	$(".notice2").html("<button onclick=\"ck_ac('"+l_i+"')\" class=\"on\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况");
 };
 
 function d_mp(l_i, this_Obj, s_f) {
@@ -931,6 +942,8 @@ if( isover != 0) {
 //this_Obj.href= "https://v.youku.com/v_show/id_"+v_ids+".html";
 return;
 }
+var targetProtocol = "https:";
+if(navigator.userAgent.indexOf("Windows NT 5")>=0) targetProtocol = "http:";
 //if (s_f == "ac/") {
 ck_yk(v_ids, this_Obj,s_f,"m");
 return;
@@ -940,15 +953,15 @@ var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
 $(".notice2").html('<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'如无法播放，请切换下方视频源（如“优酷”切到“其它”）.播放时,需要<em>多等会</em>才行');
 };
-$.ajax({url: "https://p.y3600.com/ckplayer/ckplayer.js",dataType: "script",cache: true,
+$.ajax({url: targetProtocol+"//p.y3600.com/ckplayer/ckplayer.js",dataType: "script",cache: true,
 success: function(data){
 	
 var flashvars={
-   f:'https://p.y3600.com/player/m3u8.swf',a:encodeURIComponent('https://p.y3600.com/' + s_f + v_ids + '&1.html'),s:4,c:0,p:1,i:'https://img.y3600.com/images/loading_ls.gif'};
+   f:targetProtocol+'//p.y3600.com/player/m3u8.swf',a:encodeURIComponent(targetProtocol+'//p.y3600.com/' + s_f + v_ids + '&1.html'),s:4,c:0,p:1,i:targetProtocol+'//img.y3600.com/images/loading_ls.gif'};
 	var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
-	var video=['https://p.y3600.com/'+ s_f + v_ids + '&m=1&1.html->video/mp4'];
+	var video=[targetProtocol+'//p.y3600.com/'+ s_f + v_ids + '&m=1&1.html->video/mp4'];
 	var support=['iPad','iPhone','ios','android+false','msie10+false'];
-	CKobject.embedSWF('https://p.y3600.com/ckplayer/ckplayer.swf','wplay','ckplayer_wplay','100%','440',flashvars,params);
+	CKobject.embedSWF(targetProtocol+'//p.y3600.com/ckplayer/ckplayer.swf','wplay','ckplayer_wplay','100%','440',flashvars,params);
 	CKobject.embedHTML5('wplay','ckplayer_wplay','100%',height,video,flashvars,support);
 }
 });
@@ -966,20 +979,22 @@ if( isover != 0) {
 //this_Obj.href= "https://v.youku.com/v_show/id_"+v_ids+".html";
 return;
 }
+var targetProtocol = "https:";
+if(navigator.userAgent.indexOf("Windows NT 5")>=0) targetProtocol = "http:";
 if (BDAD_ID5 == "notpc") {
 var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
 $(".notice2").html('<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'如无法播放，请切换下方视频源（如“优酷”切到“其它”）.播放时,需要<em>多等会</em>才行');
 };
-$.ajax({url: "https://p.y3600.com/ckplayer/ckplayer.js",dataType: "script",cache: true,
+$.ajax({url: targetProtocol+"//p.y3600.com/ckplayer/ckplayer.js",dataType: "script",cache: true,
 success: function(data){
 	
 var flashvars={
-f:'https://p.y3600.com/' + s_f + v_ids +'&1.html',a:'',s:2,c:0,p:1,i:'https://img.y3600.com/images/loading_ls.gif'};
+f:targetProtocol+'//p.y3600.com/' + s_f + v_ids +'&1.html',a:'',s:2,c:0,p:1,i:targetProtocol+'//img.y3600.com/images/loading_ls.gif'};
 var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
-var video=['https://p.y3600.com/'+ s_f + v_ids + '&m=1&1.html->video/mp4'];
+var video=[targetProtocol+'//p.y3600.com/'+ s_f + v_ids + '&m=1&1.html->video/mp4'];
 var support=['iPad','iPhone','ios','android+false','msie10+false'];
-CKobject.embedSWF('https://p.y3600.com/ckplayer/ckplayer.swf','wplay','ckplayer_wplay','100%','440',flashvars,params);
+CKobject.embedSWF(targetProtocol+'//p.y3600.com/ckplayer/ckplayer.swf','wplay','ckplayer_wplay','100%','440',flashvars,params);
 CKobject.embedHTML5('wplay','ckplayer_wplay','100%',height,video,flashvars,support);
 }});
 };
@@ -999,7 +1014,8 @@ this_Obj.target="_blank";
 this_Obj.href= v_ids;
 return;
 }
-
+var targetProtocol = "https:";
+if(navigator.userAgent.indexOf("Windows NT 5")>=0) targetProtocol = "http:";
 var height = 450;
 var width = "100%";
 if (BDAD_ID5 == "notpc") {
@@ -1008,13 +1024,13 @@ var height = parseInt(width*0.58);
 }
 
 $(".notice2").html('<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'如无法播放，请切换下方视频源（如“优酷”切到“其它”）然后点击相应剧集尝试播放.播放时,需要<em>多等会</em>才行');
-$.ajax({url: "https://p.y3600.com/ckplayer/ckplayer.js",dataType: "script",cache: true,
+$.ajax({url: targetProtocol+"//p.y3600.com/ckplayer/ckplayer.js",dataType: "script",cache: true,
 success: function(data){
 var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
 var support=['iPad','iPhone','ios','android+false','msie10+false'];
 if (s_f != "") {
-var flashvars={f:'https://p.y3600.com/' + s_f + v_ids +'&1.html',c:0,p:1,i:'/images/loading_ls.gif'};
-var video=['https://p.y3600.com/'+ s_f + v_ids + '&m=1&1.html->video/mp4'];
+var flashvars={f:targetProtocol+'//p.y3600.com/' + s_f + v_ids +'&1.html',c:0,p:1,i:'/images/loading_ls.gif'};
+var video=[targetProtocol+'//p.y3600.com/'+ s_f + v_ids + '&m=1&1.html->video/mp4'];
 }
 else {
 var flashvars={f:v_ids,c:0,p:1,i:'/images/loading_ls.gif'};
@@ -1022,7 +1038,7 @@ var video=[v_ids+'->video/mp4'];
 }
 var h5 = false;
 if (d == "v"|| bIsIE) h5 = true;
-CKobject.embed('https://p.y3600.com/ckplayer/ckplayer.swf','wplay','ckplayer_wplay','100%',height,h5,flashvars,video,params);
+CKobject.embed(targetProtocol+'//p.y3600.com/ckplayer/ckplayer.swf','wplay','ckplayer_wplay','100%',height,h5,flashvars,video,params);
 }});
 };
 
@@ -1046,11 +1062,13 @@ var oMeta = document.createElement('meta');oMeta.name = 'referrer';oMeta.content
 document.getElementsByTagName('head')[0].appendChild(oMeta);
 document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='" + url + "' height='"+(height+h)+"px' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 document.getElementsByTagName('head')[0].removeChild(oMeta);oMeta.content = 'default';document.getElementsByTagName('head')[0].appendChild(oMeta);
-$(".notice2").html('此视频&nbsp;<em>不稳定</em>,可能需要&nbsp;<em>等待很久</em>,或者<em>无法播放</em> '+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+$(".notice2").html('此视频&nbsp;<em>不稳定</em>,可能需要&nbsp;<em>等待很久</em>,或<em>无法播放</em> '+'切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');
 }
 
 function d_pp(id,this_Obj) {
-doif("https://p1.y3600.com/pp.html?id="+id,this_Obj);	
+var targetProtocol = "https:";
+if(navigator.userAgent.indexOf("Windows NT 5")>=0) targetProtocol = "http:";
+doif(targetProtocol+"//p1.y3600.com/pp.html?id="+id,this_Obj);	
 }
 
 function ck_so(v_ids, this_Obj) {
@@ -1058,23 +1076,24 @@ ck_yk(v_ids, this_Obj,'so/');
 }
 
 function ck_yk(v_ids, this_Obj,s_f,d) {
+v_ids=v_ids.replace(/^\/\//, window.location.protocol+"//");
 if (!s_f) s_f = "yk/";
 //BDAD_ID5 == "notpc" &&
 if ( s_f == "yk/") ck_yk1(v_ids, this_Obj,s_f);
 else if ( s_f == "qytw/") {
 if (typeof(d) == "undefined" ) d = "m";
 ck_yk0(v_ids+"&h=60", this_Obj,s_f,d);
-if (d =="m") $(".notice2").html('<button onclick="ck_yk(\''+v_ids+'\',this,\''+s_f+'\',\'\')"> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
-else $(".notice2").html('<button onclick="ck_yk(\''+v_ids+'\',this,\''+s_f+'\')" class="on"> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+if (d =="m") $(".notice2").html('<button onclick="ck_yk(\''+v_ids+'\',this,\''+s_f+'\',\'\')"> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');
+else $(".notice2").html('<button onclick="ck_yk(\''+v_ids+'\',this,\''+s_f+'\')" class="on"> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');
 }
 else if ( s_f == "qy7/") ck_yk0(v_ids, this_Obj,s_f,'m');
 else ck_yk0(v_ids, this_Obj,s_f,d);
 if (s_f =="nb/") {
-$(".notice2").html('此视频&nbsp;播放时需要&nbsp;<em>等待较长时间</em>,或者<em>用电脑尝试播放</em> '+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+$(".notice2").html('此视频&nbsp;播放时需要&nbsp;<em>等待较长时间</em>,或者<em>用电脑尝试播放</em> '+'或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');
 }
 if ( s_f == "tyk/") {
-if (v_ids.indexOf("&icode=")>=0) $(".notice2").html('<button onclick="t_hn(\''+v_ids+'\',this)" class="on"> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
-else $(".notice2").html('<button onclick="ck_yk(\''+v_ids+'\',this,\'yk2/\',\''+d+'\')" class="on"> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+if (v_ids.indexOf("&icode=")>=0) $(".notice2").html('<button onclick="t_hn(\''+v_ids+'\',this)" class="on"> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');
+else $(".notice2").html('<button onclick="ck_yk(\''+v_ids+'\',this,\'yk2/\',\''+d+'\')" class="on"> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');
 }
 }
 
@@ -1090,6 +1109,13 @@ this_Obj.target="_blank";
 this_Obj.href= "https://v.youku.com/v_show/id_"+v_ids+".html";
 return;
 }
+var targetProtocol = "https:";
+var ie6="";
+if(navigator.userAgent.indexOf("Windows NT 5")>=0) {
+	targetProtocol = "http:";
+	//ie6='<div style="text-align:center;color:#fff;font-size:16px;line-height:20px">看的到这行字的用户，如果无法播放<a href="http://p1.y3600.com/ck/xp.html" target="_blank" rel="nofollow" style="color:#F60">请点这里</a>，弹出页面之后，请再回此处尝试播放！</div>';
+	
+}
 if (!d) d = "";
 var height = 408;
 var width = "100%";
@@ -1097,14 +1123,14 @@ if (BDAD_ID5 == "notpc") {
 var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
 }
-$(".notice2").html('<button onclick="ck_yk1(\''+v_ids+'\',this,\''+s_f+'\',\''+d+'\')"> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+$(".notice2").html('<button onclick="ck_yk1(\''+v_ids+'\',this,\''+s_f+'\',\''+d+'\')"> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');
 
 $("#wplay").attr("style","");
 if (bIsWX && s_f =="yk/" && bIsAndroid) {
-document["getElementById"]("wplay")["innerHTML"] = "<IFRAME id='movie_player' name='movie_player' src='https://p1.y3600.com/ckwx/" + v_ids + "&type="+s_f +"&d="+d+ "&1.html' height='"+(height+40) +"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'><\/IFRAME>";
-$(".notice2").html('<button onclick="ck_yk1(\''+v_ids+'\',this,\''+s_f+'\',\''+d+'\')"> 兼容模式</button> '+'微信中<em>每6分钟</em>一分段,<em>点击右上角,在浏览器打开可解决</em>'+'打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+document["getElementById"]("wplay")["innerHTML"] = ie6+"<IFRAME id='movie_player' name='movie_player' src='"+targetProtocol+"//p1.y3600.com/ckwx/" + v_ids + "&type="+s_f +"&d="+d+ "&1.html' height='"+(height+40) +"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'><\/IFRAME>";
+$(".notice2").html('<button onclick="ck_yk1(\''+v_ids+'\',this,\''+s_f+'\',\''+d+'\')"> 兼容模式</button> '+'微信中<em>每6分钟</em>一分段,<em>点击右上角,在浏览器打开可解决</em>'+'打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');
 }
-else document["getElementById"]("wplay")["innerHTML"] = "<IFRAME id='movie_player' name='movie_player' src='https://p1.y3600.com/ck/" + v_ids + "&type="+s_f +"&d="+d+ "&1.html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'><\/IFRAME>";
+else document["getElementById"]("wplay")["innerHTML"] = ie6+"<IFRAME id='movie_player' name='movie_player' src='"+targetProtocol+"//p1.y3600.com/ck/" + v_ids + "&type="+s_f +"&d="+d+ "&1.html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'><\/IFRAME>";
 }
 
 function ck_yk1(v_ids, this_Obj,s_f,d) {
@@ -1115,7 +1141,7 @@ else if (s_f == "yk/") {ck_yk3(v_ids, this_Obj,s_f);return;}
 else if (s_f == "tyk/") {yk_d2(v_ids);return;}
 else if (BDAD_ID5 != "notpc") ck_yk0(v_ids+"&m=1", this_Obj,s_f,"v");
 else ck_yk0(v_ids, this_Obj,s_f,"v");
-$(".notice2").html('<button onclick="ck_yk0(\''+v_ids+'\',this,\''+s_f+'\')" class="on"> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+$(".notice2").html('<button onclick="ck_yk0(\''+v_ids+'\',this,\''+s_f+'\')" class="on"> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+'关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');
 }
 
 function ck_yk2(v_ids, this_Obj,s_f) {
@@ -1141,11 +1167,11 @@ yk_d2(v_ids,this_Obj);
 
 if (s_f == 1 || (v_ids.substring(0,3) == "XMT" && s_f !=0 )) {
 //ck_yk(v_ids, this_Obj,'yk2/','m');
-//$(".notice2").html("<button onclick=\"ck_yk2('"+v_ids+"',this,0)\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况"); 
+//$(".notice2").html("<button onclick=\"ck_yk2('"+v_ids+"',this,0)\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况"); 
 return;
 }
 //yk_d12(v_ids,this_Obj);
-$(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"', this,'yk2/','m')\"> 兼容模式</button> " +"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况"); 
+$(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"', this,'yk2/','m')\"> 兼容模式</button> " +"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况"); 
 }
 
 function ck_yk3(v_ids, this_Obj,s_f,d) {
@@ -1164,6 +1190,8 @@ if (bIsEdge) d="b";
 else d = "b";
 }
 //&& !bIsEdge
+var targetProtocol = "https:";
+if(navigator.userAgent.indexOf("Windows NT 5")>=0) targetProtocol = "http:";
 if (!d) d = "";
 var height = 408;
 var width = "100%";
@@ -1171,40 +1199,40 @@ if (BDAD_ID5 == "notpc") {
 //if (!d) d = "x";
 var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
-$(".notice2").html('<button onclick="ck_yk3(\''+v_ids+'\',\'\',\''+s_f+'\',\''+ (d?(d=="v"?"b":""):"v") + '\')"'+ (d?' class="on"':'') + '> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+(d?'关闭':'打开')+'左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+$(".notice2").html('<button onclick="ck_yk3(\''+v_ids+'\',\'\',\''+s_f+'\',\''+ (d?(d=="v"?"b":""):"v") + '\')"'+ (d?' class="on"':'') + '> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+(d?'关闭':'打开')+'左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');
 
 }
-else $(".notice2").html('<button onclick="ck_yk3(\''+v_ids+'\',\'\',\''+s_f+'\',\''+ (d?(d=="v"?"b":""):"v") + '\')"'+ (d?' class="on"':'') + '> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+(d?'关闭':'打开')+'左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+else $(".notice2").html('<button onclick="ck_yk3(\''+v_ids+'\',\'\',\''+s_f+'\',\''+ (d?(d=="v"?"b":""):"v") + '\')"'+ (d?' class="on"':'') + '> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+(d?'关闭':'打开')+'左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');
 
 $("#wplay").attr("style","");
 if ((bIsWX && s_f =="yk/" && bIsAndroid)) {
-$(".notice2").html('<button onclick="ck_yk3(\''+v_ids+'\',\'\',\''+s_f+'\',\''+ (d?(d=="v"?"b":"x"):"v") + '\')"'+ (d?' class="on"':'') + '> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+(d?'关闭':'打开')+'左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+$(".notice2").html('<button onclick="ck_yk3(\''+v_ids+'\',\'\',\''+s_f+'\',\''+ (d?(d=="v"?"b":"x"):"v") + '\')"'+ (d?' class="on"':'') + '> 兼容模式</button> '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+(d?'关闭':'打开')+'左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');
 }
 if (d =="x") {
 height = height+40;
-$(".notice2").html('<button onclick="ck_yk3(\''+v_ids+'\',\'\',\''+s_f+'\',\''+ (d?(d=="v"?"b":"v"):"v") + '\')">  兼容模式</button> '+(bIsWX?'微信中':'')+'<em>每3分钟</em>一分段,'+(bIsWX?'<em>点击右上角,在浏览器打开可解决</em> ':'')+(d?'关闭':'打开')+'左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+$(".notice2").html('<button onclick="ck_yk3(\''+v_ids+'\',\'\',\''+s_f+'\',\''+ (d?(d=="v"?"b":"v"):"v") + '\')">  兼容模式</button> '+(bIsWX?'微信中':'')+'<em>每3分钟</em>一分段,'+(bIsWX?'<em>点击右上角,在浏览器打开可解决</em> ':'')+(d?'关闭':'打开')+'左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');
 }
 
 if (s_f =="yk/") {
-if (bIsMi) {$(".notice2").html('<button onclick="ck_yk3(\''+v_ids+'\',\'\',\''+s_f+'\',\''+ (d?(d=="v"?"b":""):"v") + '\')"'+ (d?' class="on"':'') + '>  兼容模式</button> '+'<em>小米浏览器播放有问题,请换&nbsp;QQ浏览器观看</em> '+(d?'关闭':'打开')+'左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');}
-//if (bIsIE || bIsEdge) {$(".notice2").html('<button onclick="ck_yk3(\''+v_ids+'\',\'\',\''+s_f+'\',\''+ (d?(d=="v"?"b":""):"v") + '\')"'+ (d?' class="on"':'') + '>  兼容模式</button> '+'<em>IE浏览器播放有问题,请换&nbsp;QQ浏览器观看</em> '+(d?'关闭':'打开')+'左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');}
+if (bIsMi) {$(".notice2").html('<button onclick="ck_yk3(\''+v_ids+'\',\'\',\''+s_f+'\',\''+ (d?(d=="v"?"b":""):"v") + '\')"'+ (d?' class="on"':'') + '>  兼容模式</button> '+'<em>小米浏览器播放有问题,请换&nbsp;QQ浏览器观看</em> '+(d?'关闭':'打开')+'左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');}
+//if (bIsIE || bIsEdge) {$(".notice2").html('<button onclick="ck_yk3(\''+v_ids+'\',\'\',\''+s_f+'\',\''+ (d?(d=="v"?"b":""):"v") + '\')"'+ (d?' class="on"':'') + '>  兼容模式</button> '+'<em>IE浏览器播放有问题,请换&nbsp;QQ浏览器观看</em> '+(d?'关闭':'打开')+'左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');}
 }
-var host = "https://p1.y3600.com/ckyk/";
-if (BDAD_ID5 == "notpc" || (d !="" && !bIsIE)) host = "https://p1.y3600.com/ckyk/";
+var host = targetProtocol+"//p1.y3600.com/ckyk/";
+if (BDAD_ID5 == "notpc" || (d !="" && !bIsIE)) host = targetProtocol+"//p1.y3600.com/ckyk/";
 
 document["getElementById"]("wplay")["innerHTML"] = "<IFRAME id='movie_player' name='movie_player' src='"+ host + v_ids +(d?"&d="+d:"")+"&2.html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'><\/IFRAME>";
 if (BDAD_ID5 == "notpc") {
 
-if (bIsMi) $(".notice2").html('本视频来自ACFUN，<em>小米浏览器播放有问题,请换&nbsp;QQ浏览器观看</em> 尝试切换下方的<em>优酷</em>至<em>土豆</em>,希望可以播放 '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em>');
-else if (bIsAndroid) $(".notice2").html('本视频来自ACFUN，<em>安卓手机播放时，需要加载一会,也可能无法播放</em> 尝试切换下方的<em>优酷</em>至<em>土豆</em>,希望可以播放 '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> ');
-else $(".notice2").html('本视频来自ACFUN，<em>暂时只支持 安卓手机 播放</em> 尝试切换下方的<em>优酷</em>至<em>土豆</em>,希望可以播放 '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> ');
+if (bIsMi) $(".notice2").html('本视频来自ACFUN，<em>小米浏览器播放有问题,请换&nbsp;QQ浏览器观看</em> 尝试切换下方的<em>其它</em>至<em>备用</em>,希望可以播放 '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em>');
+else if (bIsAndroid) $(".notice2").html('本视频来自ACFUN，<em>安卓手机播放时，需要加载一会,也可能无法播放</em> 尝试切换下方的<em>其它</em>至<em>备用</em>,希望可以播放 '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> ');
+else $(".notice2").html('本视频来自ACFUN，<em>暂时只支持 安卓手机 播放</em> 尝试切换下方的<em>其它</em>至<em>备用</em>,希望可以播放 '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> ');
 }
-else $(".notice2").html('本视频来自ACFUN，<em>暂时只支持 安卓手机 播放，也可能无法播放</em> 提示文件下载的，<em>请换QQ浏览器</em><br>&nbsp;&nbsp;&nbsp;&nbsp; 尝试切换下方的<em>优酷</em>至<em>土豆</em>,希望可以播放 '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> ').css("height","55px");
+else $(".notice2").html('本视频来自ACFUN，<em>暂时只支持 安卓手机 播放，也可能无法播放</em> 提示文件下载的，<em>请换QQ浏览器</em><br>&nbsp;&nbsp;&nbsp;&nbsp; 尝试切换下方的<em>其它</em>至<em>备用</em>,希望可以播放 '+'<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> ').css("height","55px");
 }
 
 function d_mg1(v_ids, this_Obj) {
 ck_yk(v_ids, this_Obj,'url/');
-$(".notice2").html("<button onclick=\"d_mg2('"+v_ids+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
+$(".notice2").html("<button onclick=\"d_mg2('"+v_ids+"')\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况");
 }
 
 function d_mg(l_i, this_Obj) {
@@ -1242,13 +1270,10 @@ var height = parseInt(width*0.58);
 $("#wplay").attr("style","");
 document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://m.mgtv.com/#/play/" + id + "' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 	};	
-	$(".notice2").html("<button onclick=\"d_mg1('"+l_i+"')\" class=\"on\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况");
+	$(".notice2").html("<button onclick=\"d_mg1('"+l_i+"')\" class=\"on\"> 兼容模式</button> " + '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况");
 };
 
-function tyun(l_i) {
-document["getElementById"]("wplay")["innerHTML"] = "";
-$(".notice2").html("<em>该视频已经&nbsp;!!!失效!!!</em> 请切换下方的<em>优酷</em>至<em>其它</em>,可改善无法播放或者卡顿等情况");
-}
+
 
 function tnav(v_ids, this_Obj,ctrl,s_f,d,ssl) {
 $('.error').remove();
@@ -1281,6 +1306,8 @@ this_Obj.target="_blank";
 this_Obj.href= "//video.tudou.com/v/"+v_ids+".html";
 return;
 }
+var targetProtocol = "https:";
+if(navigator.userAgent.indexOf("Windows NT 5")>=0) targetProtocol = "http:";
 var height = 408;
 var width = "100%";
 
@@ -1290,36 +1317,38 @@ var height = parseInt(width*0.58)+40;
 
 }
 $("#wplay").attr("style","");
-document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://p1.y3600.com/cktyk/" + v_ids + "&type="+s_f+"&1.html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
+document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='"+targetProtocol+"//p1.y3600.com/cktyk/" + v_ids + "&type="+s_f+"&1.html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 if (s_f=="tyk1/") {s_f = "tyk/";}
 
 if (BDAD_ID5 == "notpc") {
-$(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"',this,'"+s_f+"','"+d+"')\"> 兼容模式</button> "+'微信中<em>每6分钟</em>一分段,<em>点击右上角,在浏览器打开可解决</em>'+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
+$(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"',this,'"+s_f+"','"+d+"')\"> 兼容模式</button> "+'微信中<em>每6分钟</em>一分段,<em>点击右上角,在浏览器打开可解决</em>'+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况");
 }
 else {
-$(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"',this,'"+s_f+"','"+d+"')\"> 兼容模式</button> "+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
+$(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"',this,'"+s_f+"','"+d+"')\"> 兼容模式</button> "+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况");
 }
 };
 
 function ck_tyk1(v_ids, this_Obj) {
 ck_yk(v_ids,this_Obj,'tyk/');
-$(".notice2").html("<button onclick=\"yk_d21('"+v_ids+"',this)\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
+$(".notice2").html("<button onclick=\"yk_d21('"+v_ids+"',this)\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况");
 }
 
 function yk_d2(v_ids, this_Obj) {
+v_ids=v_ids.replace(/([^=])=+$/, "$1==");
 	//if (BDAD_ID5 == "notpc") yk_d21(v_ids,this_Obj);
 	//else {	ck_tyk(v_ids, this_Obj,"tyk1/");
-//$(".notice2").html("<button onclick=\"ck_tyk1('"+v_ids+"',this)\"> 兼容模式</button> " + '<em>视频播放&nbsp;6分钟&nbsp;后,会自动播放后继的内容</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");	
+//$(".notice2").html("<button onclick=\"ck_tyk1('"+v_ids+"',this)\"> 兼容模式</button> " + '<em>视频播放&nbsp;6分钟&nbsp;后,会自动播放后继的内容</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况");	
 //}
 if (!isNaN(v_ids) || v_ids.length == 11) { t_hn(v_ids,this_Obj); return;}
 else yk_d22(v_ids,this_Obj);
-//$(".notice2").html("<button onclick=\"ck_tyk('"+v_ids+"', this,'yk2/')\"> 兼容模式</button> " +"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况"); 
+//$(".notice2").html("<button onclick=\"ck_tyk('"+v_ids+"', this,'yk2/')\"> 兼容模式</button> " +"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况"); 
 
-//$(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"',this,'tyk/','m')\"> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
+//$(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"',this,'tyk/','m')\"> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况");
 }
 
 
 function yk_d21(v_ids, this_Obj) {
+v_ids=v_ids.replace(/([^=])=+$/, "$1==");
 	//tnav(v_ids,this_Obj,"yk_d211");
 	//return;
 	$('.error').remove();
@@ -1341,8 +1370,8 @@ var height = parseInt(width*0.58);
 }
 doif("https://video.tudou.com/v/" + v_ids + ".html",this_Obj);	
 
-$(".notice2").html("<button onclick=\"yk_d('"+v_ids+"',this)\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
-//$(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"',this,'yk2/','m')\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
+$(".notice2").html("<button onclick=\"yk_d('"+v_ids+"',this)\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况");
+//$(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"',this,'yk2/','m')\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况");
 };
 //function yk_d3(v_ids, this_Obj) {tnav(v_ids,this_Obj,"yk_d211");}
 function yk_d211(v_ids, this_Obj) {
@@ -1374,7 +1403,7 @@ fo["addParam"]("wmode", "transparent");
 
 if (!fo["write"]("wplay")) {window["focus"]();};
 }
-$(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"',this,'tyk/','m')\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
+$(".notice2").html("<button onclick=\"ck_yk('"+v_ids+"',this,'tyk/','m')\" class='on'> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"关闭左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况");
 };
 
 function yk_d22(v_ids, this_Obj) {
@@ -1387,6 +1416,8 @@ this_Obj.target="_blank";
 this_Obj.href= "//video.tudou.com/v/"+v_ids+".html";
 return;
 }
+var targetProtocol = "https:";
+if(navigator.userAgent.indexOf("Windows NT 5")>=0) targetProtocol = "http:";
 var height = 450;
 var width = "100%";
 
@@ -1395,42 +1426,42 @@ var width = document["getElementById"]("wplay").clientWidth;
 var height = parseInt(width*0.58);
 }
 $("#wplay").attr("style","");
-document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='https://p1.y3600.com/yk/" + v_ids + "&1.html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
+document["getElementById"]("wplay")["innerHTML"] = "<IFRAME src='"+targetProtocol+"//p1.y3600.com/yk/" + v_ids + "&1.html' height='"+height+"' width='"+width+"' scrolling='no' frameBorder='0' allowfullscreen='true'></IFRAME>";
 
-$(".notice2").html("<button onclick=\"yk_d21('"+v_ids+"',this)\"> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放或者卡顿等情况");
+$(".notice2").html("<button onclick=\"yk_d21('"+v_ids+"',this)\"> 兼容模式</button> "+ '<em id="wx_notice"'+ (bIsWX?"":' style="display:none;"') +'">微信中&nbsp;黑屏或无法全屏,点击右上角,在浏览器中打开</em> '+"打开左侧<em>兼容模式</em>,或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放或者卡顿等情况");
 
 };
 function ck_m3u8(v_ids,this_Obj) {
-if (v_ids.search(/@@hd\.m3u8/i) > 1) ck_yk(v_ids,this_Obj,"hls/","hls");
+if (v_ids.search(/p\d?\.y3600\.com\/m3u8\//i) > 1) ck_yk(v_ids,this_Obj,"hls/","hls");
+else if (v_ids.search(/@@\w+?\.m3u8/i) > 1) ck_yk(v_ids,this_Obj,"hls/","hls");
+else if (v_ids.search(/alicdn./i) > 1) ck_yk(v_ids,this_Obj,"vu/","vu");
 else ck_yk(v_ids,this_Obj,"um/","um");
-$(".notice2").html('此视频&nbsp;<em>不稳定</em>,可能需要&nbsp;<em>等待很久</em>,或者<em>无法播放</em> '+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+$(".notice2").html('此视频&nbsp;<em>不稳定</em>,可能需要&nbsp;<em>等待很久</em>或<em>无法播放</em>，'+'切换下方的<em>其它</em>至<em>备用</em>可改善。关注微信号<a href="/m_weixin1.html" target="_blank"><em>"y3600_com"</em></a>了解韩剧最新资讯');
 }
 
 function ck_ba(v_ids,this_Obj) {
 ck_yk(v_ids,this_Obj,"ba/","v");
-$(".notice2").html('此视频&nbsp;<em>苹果</em> 可能无法播放,请尝试用<em>安卓 或者 电脑</em>播放 '+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+$(".notice2").html('此视频&nbsp;<em>不稳定</em>,可能需要&nbsp;<em>等待很久</em>或<em>无法播放</em>，'+'切换下方的<em>其它</em>至<em>备用</em>可改善。关注微信号<a href="/m_weixin1.html" target="_blank"><em>"y3600_com"</em></a>了解韩剧最新资讯');
+
+}
+
+function ck_ba1(v_ids,this_Obj) {
+ck_yk(v_ids,this_Obj,"ba1/","v");
+$(".notice2").html('此视频&nbsp;<em>不稳定</em>,可能需要&nbsp;<em>等待很久</em>或<em>无法播放</em>，'+'切换下方的<em>其它</em>至<em>备用</em>可改善。关注微信号<a href="/m_weixin1.html" target="_blank"><em>"y3600_com"</em></a>了解韩剧最新资讯');
+
+}
+function ck_ba2(v_ids,this_Obj) {
+ck_yk(v_ids,this_Obj,"ba2/","vm");
+$(".notice2").html('此视频&nbsp;<em>不稳定</em>,可能需要&nbsp;<em>等待很久</em>或<em>无法播放</em>，'+'切换下方的<em>其它</em>至<em>备用</em>可改善。关注微信号<a href="/m_weixin1.html" target="_blank"><em>"y3600_com"</em></a>了解韩剧最新资讯');
 
 }
 
 function ck_sev(v_ids,this_Obj) {
 document["getElementById"]("wplay")["innerHTML"]="";
-$(".notice2").html('此视频&nbsp;<em>无法播放</em> '+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
+$(".notice2").html('此视频&nbsp;<em>无法播放</em> '+'或切换下方的<em>其它</em>至<em>备用</em>,可改善无法播放等情况');
 	
 }
 
-function ck_sed(v_ids,this_Obj) {
-if (v_ids.substring(0,5) == "88888") {
-document["getElementById"]("wplay")["innerHTML"]="";
-$(".notice2").html('此视频&nbsp;<em>出现故障。我们会逐步更新</em> '+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
-}
-else doif('/do/opent'+'vts1t'+'s.php?v='+v_ids,this_Obj,0,0,'default');
-
-}
-function ck_m42(v_ids,this_Obj) {
-doif('/do/mp42.php?v='+v_ids,this_Obj,0,0,'default');
-//document["getElementById"]("wplay")["innerHTML"]="";
-//$(".notice2").html('此视频&nbsp;<em>无法播放</em> '+'或切换下方的<em>优酷</em>至<em>土豆</em>,可改善无法播放等情况');
-}
 function ck_ba7(v_ids,this_Obj) {
 ck_yk(v_ids,this_Obj,"ba7/");
 }
